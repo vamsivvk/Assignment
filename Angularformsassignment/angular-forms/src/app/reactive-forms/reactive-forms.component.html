@@ -1,0 +1,45 @@
+<div class="col-md-4 offset-md-4 mt-4">
+    <form [formGroup]='registrationform' (ngSubmit)='submitform()'>
+        <div class="card">
+            <div class="card-header">
+                <h4>Please Register!!!!!</h4>
+            </div>
+            <div class="card-body">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                    </div>
+                    <input type="email" name="email" id="email" class="form-control" FormControlName='email'>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Password</span>
+                    </div>
+                    <input type="password" name="password" id="password" class="form-control"
+                        FormControlName='password'>
+                </div>
+                
+                <div FormArrayName='skills'>
+                    <div *ngFor='let skill of skills.controls;index as i'>
+
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">skills{{i+1}}</span>
+                            </div>
+                            <input type="skills" name="skills" id="skills{{i+1}}" class="form-control"
+                                [formControlName]='i'>
+                                <button class="btn btn-primary" type="button"(click)='addSkills()'>AddSkills</button>
+                            <div class="col-md-2">
+                                <button class="btn btn-dark" type="button" (click)='removeSkills(i)'>&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-outline-primary float-centre" type="submit">Register</button>
+        </div>
+    </form>
+</div>
